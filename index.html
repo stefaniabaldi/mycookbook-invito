@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invito – My Cookbook</title>
+<!-- Pagina per i link d'invito di My Cookbook: da pubblicare su un sito (es. GitHub Pages o stefaniabaldi.com)
+     e poi da indicare in src/lib/condivisione.ts → PAGINA_INVITI. Legge il codice da ?t=… -->
+<style>
+  body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #FBF3EA; color: #2F2F2F; }
+  main { max-width: 420px; margin: 0 auto; padding: 48px 24px; text-align: center; }
+  .marchio { color: #C24F35; font-weight: 700; letter-spacing: .25em; font-size: 13px; text-transform: uppercase; }
+  h1 { font-size: 26px; margin: 16px 0 8px; }
+  p { color: #5E5A55; line-height: 1.5; }
+  a.btn, button { display: block; width: 100%; box-sizing: border-box; margin: 12px 0; padding: 16px; border-radius: 999px;
+    font-size: 15px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 0; cursor: pointer; }
+  .pieno { background: #C24F35; color: #fff; }
+  .vuoto { background: transparent; color: #2C7A53; border: 2px solid #7CC79F !important; }
+  .codice { font-family: ui-monospace, Menlo, monospace; background: #FFFDF9; border: 1px solid #DDD3C7; border-radius: 12px;
+    padding: 12px; word-break: break-all; margin: 8px 0 4px; }
+  small { color: #5E5A55; }
+</style>
+</head>
+<body>
+<main>
+  <svg width="96" height="100" viewBox="216 214 592 620" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <g stroke-width="16">
+      <path d="M512,529c-80-44-180-52-280-30v260c100-22,200-14,280,30v-260Z" stroke="#C24F35"/>
+      <path d="M512,529c80-44,180-52,280-30v260c-100-22-200-14-280,30v-260Z" stroke="#C24F35"/>
+      <path d="M512,529v260" stroke="#C24F35"/>
+      <path d="M290,584c60-10,120-4,170,18M290,654c60-10,120-4,170,18M564,602c50-22,110-28,170-18M564,672c50-22,110-28,170-18" stroke="#4FA77A"/>
+      <path d="M422,419.5c-32.3-7.3-52.6-39.4-45.3-71.7,6.3-28,31.6-47.6,60.3-46.8,0-41.4,33.6-75,75-75s75,33.6,75,75c33.1-1,60.8,25.1,61.8,58.2.9,28.7-18.7,54-46.8,60.3v76.5h-180v-76.5Z" stroke="#C24F35" fill="#FBF3EA"/>
+      <path d="M422,451h180" stroke="#C24F35"/>
+    </g>
+  </svg>
+  <div class="marchio">My Cookbook</div>
+  <h1>Sei stato invitato a una raccolta di ricette</h1>
+  <p>Se hai già l'app, aprila con il pulsante qui sotto. Se non ce l'hai, scaricala: poi torna su questa pagina e tocca di nuovo “Apri”.</p>
+  <a class="btn pieno" id="apri" href="#">Apri in My Cookbook</a>
+  <!-- Link di download: da aggiornare quando l'app è sugli store -->
+  <a class="btn vuoto" id="android" href="#">Scarica per Android</a>
+  <a class="btn vuoto" id="iphone" href="#">Scarica per iPhone</a>
+  <p><small>Oppure, nell'app: Raccolte → “Ho un codice d'invito” e inserisci questo codice:</small></p>
+  <div class="codice" id="codice">—</div>
+</main>
+<script>
+  var LINK_ANDROID = ''; // es. il link della build Android o di Google Play
+  var LINK_IPHONE = '';  // es. il link pubblico di TestFlight o dell'App Store
+  var t = new URLSearchParams(location.search).get('t') || '';
+  document.getElementById('codice').textContent = t || '—';
+  document.getElementById('apri').href = 'ricettario://invito/' + encodeURIComponent(t);
+  var a = document.getElementById('android'), i = document.getElementById('iphone');
+  if (LINK_ANDROID) a.href = LINK_ANDROID; else a.style.display = 'none';
+  if (LINK_IPHONE) i.href = LINK_IPHONE; else i.style.display = 'none';
+</script>
+</body>
+</html>
